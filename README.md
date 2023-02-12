@@ -1,6 +1,6 @@
 # 0x00. AirBnB clone
 
-[This is source image](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20230212%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230212T222201Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=774e2e87d73d5367bf70e70da85fc30a02177b64e72a806b94933fd2e82c4cbc)
+![This is source image](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20230212%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230212T222201Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=774e2e87d73d5367bf70e70da85fc30a02177b64e72a806b94933fd2e82c4cbc)
 
 ## Project Definition
 This is the first step towards building your first full web application: the AirBnB clone. Each task is linked and will help you to:
