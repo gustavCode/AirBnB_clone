@@ -111,7 +111,7 @@ class HBNBCommand(cmd.Cmd):
         key = args[0] + '.' + args[1]
         print(dt[key])
 
-def do_destroy(self, line):
+    def do_destroy(self, line):
         """
         Deletes an instance of a certain class.
         
