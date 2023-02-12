@@ -5,6 +5,7 @@ Contains entry point of our command intepreter
 """
 
 import cmd
+import re
 import json
 import models
 
