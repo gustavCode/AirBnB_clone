@@ -8,6 +8,7 @@ import json
 import models
 from models.base_model import BaseModel
 
+
 class FileStorage():
     """
     Custom class for file storage
@@ -26,7 +27,7 @@ class FileStorage():
         """
         sets in __objects the object with the key
         <object class name>.id
-        
+
         Args:
             object(obj): object to write
         """

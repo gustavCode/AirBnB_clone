@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 The Console
-Contains entry point of our command intepreter
+Contains entry point of our command interpreter
 """
 
 import cmd
@@ -11,6 +11,10 @@ import models
 
 
 class HBNBCommand(cmd.Cmd):
+    """
+    AirBnB class to simulate the command interpreter
+    """
+
     prompt = "(hbnb) "
 
     def emptyline(self):
