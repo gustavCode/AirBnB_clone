@@ -1,6 +1,11 @@
+#!/usr/bin/python3
+"""
+Defines the base model for classes
+"""
 import uuid
 from datetime import datetime
 import models
+
 
 class BaseModel():
     """A model class that defines all common
@@ -26,7 +31,8 @@ class BaseModel():
             models.storage.new(self)
 
     def __str__(self):
-        return("[" + __class__.__name__ + "] (" + self.id + ") " + str(self.__dict__))
+        return "[{}] ({}) {}".
+    format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         self.updated_at = datetime.now()

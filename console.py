@@ -9,6 +9,7 @@ import re
 import json
 import models
 
+
 class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
@@ -105,7 +106,7 @@ class HBNBCommand(cmd.Cmd):
             return
         args = line.split()
         dt = storage.all()
-        
+
         if args[1][0] == '"':
             args[1] = args[1].replace('"', "")
         key = args[0] + '.' + args[1]
@@ -114,7 +115,7 @@ class HBNBCommand(cmd.Cmd):
     def do_destroy(self, line):
         """
         Deletes an instance of a certain class.
-        
+
         Args:
             line(args): to enter with command: <class name> <id>
         """
@@ -131,8 +132,8 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, line):
         """
         Shows all instances, or instances of a certain class
-        
-        Args: 
+
+        Args:
             line(args): enter with command (optional): <class name>
         """
         dt = storage.all()
@@ -149,7 +150,7 @@ class HBNBCommand(cmd.Cmd):
         """
         Updates an instance based on the class name
         and id by adding or updating an attribute
-        
+
         Args:
             line(args): receives the commands:
             <class name> <id> <attribute name> "<attribute value>"
@@ -248,7 +249,8 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_quit(self, line):
-        """Function to quit command intepreter 
+        """
+        Function to quit command intepreter
         bye typing `quit`
 
         Args:
@@ -258,6 +260,7 @@ class HBNBCommand(cmd.Cmd):
 
         "Quit command to exit program\n"
         return True
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
