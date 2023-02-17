@@ -6,6 +6,7 @@ import uuid
 from datetime import datetime
 import models
 
+timef = "%Y-%m-%dT%H:%M:%S.%f"
 
 class BaseModel():
     """A model class that defines all common
@@ -13,34 +14,48 @@ class BaseModel():
     """
 
     def __init__(self, *args, **kwargs):
-        """Initialize id, created_at, and updated_at
-        attributes
-        """
-        if (len(kwargs) != 0):
+        """Initialization of the base model"""
+        if kwargs:
             for key, value in kwargs.items():
-                if key in ("updated_at", "created_at"):
-                    self.__dict__[key] = datetime.now()
-                elif key[0] == "id":
-                    self.__dict__[key] = str(value)
-                else:
-                    self.__dict__[key] = value
+                if key != "__class__":
+                    setattr(self, key, value)
+            if kwargs.get("created_at", None) and type(self.created_at) is str:
+                self.created_at = datetime.strptime(kwargs["created_at"], timef)
+            else:
+                self.created_at = datetime.utcnow()
+            if kwargs.get("updated_at", None) and type(self.updated_at) is str:
+                self.updated_at = datetime.strptime(kwargs["updated_at"], timef)
+            else:
+                self.updated_at = datetime.utcnow()
+            if kwargs.get("id", None) is None:
+                self.id = str(uuid.uuid4())
         else:
             self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
-            models.storage.new(self)
+            self.created_at = datetime.utcnow()
+            self.updated_at = self.created_at
 
     def __str__(self):
-        return "[{}] ({}) \
-                {}".format(self.__class__.__name__, self.id, self.__dict__)
+        """String representation of the BaseModel class"""
+        return "[{:s}] ({:s}) {}".format(self.__class__.__name__, self.id,
+                                         self.__dict__)
 
     def save(self):
-        self.updated_at = datetime.now()
+        """updates the attribute 'updated_at' with the current datetime"""
+        self.updated_at = datetime.utcnow()
+        models.storage.new(self)
         models.storage.save()
 
-    def to_dict(self):
-        self.created_at = datetime.isoformat(self.created_at)
-        self.updated_at = datetime.isoformat(self.updated_at)
-        a_dict = self.__dict__
-        a_dict["__class__"] = __class__.__name__
-        return a_dict
+    def to_dict(self, save_fs=None):
+        """returns a dictionary containing all keys/values of the instance"""
+        new_dict = self.__dict__.copy()
+        if "created_at" in new_dict:
+            new_dict["created_at"] = new_dict["created_at"].strftime(timef)
+        if "updated_at" in new_dict:
+            new_dict["updated_at"] = new_dict["updated_at"].strftime(timef)
+        new_dict["__class__"] = self.__class__.__name__
+        if "_sa_instance_state" in new_dict:
+            del new_dict["_sa_instance_state"]
+        if save_fs is None:
+            if "password" in new_dict:
+                del new_dict["password"]
+        return new_dict
