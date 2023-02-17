@@ -2,6 +2,7 @@
 """
 Defines the State class
 """
+import models
 from models.base_model import BaseModel
 
 
