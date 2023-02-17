@@ -8,7 +8,7 @@ import models
 
 timef = "%Y-%m-%dT%H:%M:%S.%f"
 
-class BaseModel():
+class BaseModel:
     """A model class that defines all common
     attributes/methods for other classes
     """
