@@ -2,6 +2,7 @@
 """
 Module for Place class
 """
+import models
 from models.base_model import BaseModel
 
 
